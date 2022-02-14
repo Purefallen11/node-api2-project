@@ -1,6 +1,6 @@
 const Post = require('./posts-model')
 const express = require('express')
-const { route } = require('../server')
+
 
 const router = express.Router()
 
