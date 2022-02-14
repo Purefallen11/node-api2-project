@@ -63,4 +63,21 @@ router.put('/:id', (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res) => {
+    try{
+        const { id } = req.params
+        const post = await Post.findById(id)
+        if (!post) {
+            res.status(404).json('The post with the specified ID does not exist')
+        } else {
+            await Post.remove(id)
+            res.status(200).json(post)
+        }
+    }
+    catch (err){
+        res.status(500).json('The post could not be removed')
+    }
+    
+})
+
 module.exports = router
